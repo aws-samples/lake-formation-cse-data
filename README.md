@@ -211,7 +211,7 @@ In Lake Formation setup the resource link to the remote table:
 
 ![result](./images/xact2.png)
 
-Query the data form Athena
+Query the data from Athena
 
 ![result](./images/xact4.png)
 
