@@ -1,3 +1,26 @@
+
+Accessing Client Side Encrypted Dat awith Athena and Lake Formation
+
+## Overview of Steps
+
+* Create KMS Key
+* Setup a fargate (serverless) based EKS cluster
+* Enable EMR on EKS
+* Prepare a spark job to client side encrypt (CSE) the raw data (.csv file) & populate Glue catalog
+* Verify data is client side encrypted on S3
+
+* Put bucket & CSE data under Lake Formation control, setup a Lake Formation data filter.
+* Setup Lake Formation data access permissions
+* Adjust KMS Key policy
+* Query Data with Athena (V3)
+
+* Setup Cross Account access for consumer account via Lake Formation
+* Setup Lake Formation resource links in consumer account
+* Verify Athena access in the consumer account
+
+---------
+
+
 ## Create a KMS key:
 
 export KeyID=$(aws kms create-key --query KeyMetadata.KeyId --output text)
@@ -148,11 +171,10 @@ for example:
     "Condition": {
         "ArnLike": {
             "aws:PrincipalArn": [
-
-                "arn:aws:*::xxxxxxxxxxxx:*/AWSLF*",
-                "arn:aws:*::xxxxxxxxxxxx:role/EMRContainers-JobExecutionRole-at",
-                "arn:aws:*::xxxxxxxxxxxx:role/TeamRole",
-                "arn:aws:iam::xxxxxxxxxxxx:*/AWSServiceRoleForLakeFormationDataAccess"
+                "arn:aws:sts::xxxxxxxxxxxx:assumed-role/TeamRole/AWSLF-00-AT-xxxxxxxxxxxx-*",
+                "arn:aws:iam::xxxxxxxxxxxx:role/aws-service-role/lakeformation.amazonaws.com/AWSServiceRoleForLakeFormationDataAccess",
+                "arn:aws:iam::xxxxxxxxxxxx:role/EMRContainers-JobExecutionRole-at",
+                "arn:aws:iam::xxxxxxxxxxxx:role/TeamRole"
             ]
         }
     }
