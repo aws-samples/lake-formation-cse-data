@@ -1,5 +1,5 @@
 
-Accessing Client Side Encrypted Dat awith Athena and Lake Formation
+# Accessing Client Side Encrypted Data with Athena and Lake Formation
 
 ## Overview of Steps
 
