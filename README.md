@@ -112,9 +112,9 @@ EOF
 In S3 console check the s3 object the output object `write-encrypt-trip-data4.parquet` headers are showing client side encryption 
 
 
-![result](./s3-1.png)
+![result](./images/s3-1.png)
 
-![result](./s3-2.png)
+![result](./images/s3-2.png)
 
 
 -------
@@ -127,13 +127,13 @@ Ensuring that:
 
 * In Lake Fromation - The data lake location specifies  emr-eks-demo-${ACCOUNT_ID}-${AWS_REGION}, using the default `AWSServiceRoleForLakeFormationDataAccess` service role:
 
-![result](./lake-locations.png)
+![result](./images/lake-locations.png)
 
 * All IAM access is turned off in Lake Formation (All `IAMAllowedPrincipals` permissions removed)
 * That the role used for the data lake location has access to the Key via the KMS key policy (see below)
 * Set the Lake Formation data access permissions:
 
-![result](./lake-data-perms.png)
+![result](./images/lake-data-perms.png)
 
 -----
 
@@ -186,12 +186,12 @@ You can also optionally apply data filters in LakeFormation
 
 vendorid = '1'
 
-![result](./lf-filter.png)
+![result](./images/lf-filter.png)
 
 
 Here's an end result -  a client side encryted parquet file being queried (note the key icon) with Lake Formation data filter also being applied :
 
-![result](./athena1.png)
+![result](./images/athena1.png)
 
 The table has 20,000 rows - but only 3687 are being return due to the Lake Formation data filter ( vendorid='1' )
 
