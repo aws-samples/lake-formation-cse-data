@@ -195,6 +195,26 @@ Here's an end result -  a client side encryted parquet file being queried (note 
 
 The table has 20,000 rows - but only 3687 are being return due to the Lake Formation data filter ( vendorid='1' )
 
+-------
+
+## Cross Account Data Sharing
+
+Grant Permissions to the remote (consumer) Account in Lake Formation
+
+![result](./images/xact1.png)
+
+### Switch to the consumer account
+
+Accept the incoming RAM shares form the RAM console
+
+In Lake Formation setup the resource link to the remote table:
+
+![result](./images/xact2.png)
+
+Query the data form Athena
+
+![result](./images/xact4.png)
+
 
 
 
