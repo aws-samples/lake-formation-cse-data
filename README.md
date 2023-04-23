@@ -125,7 +125,7 @@ Ensuring that:
 * The Athena Engine is set to V3
 * Configure Athena to CSE it's output
 
-* In Lake Fromation - The data lake location specifies  emr-eks-demo-${ACCOUNT_ID}-${AWS_REGION}, using the default `AWSServiceRoleForLakeFormationDataAccess` service role:
+* In Lake Formation - The data lake location specifies  emr-eks-demo-${ACCOUNT_ID}-${AWS_REGION}, using the default `AWSServiceRoleForLakeFormationDataAccess` service role:
 
 ![result](./images/lake-locations.png)
 
